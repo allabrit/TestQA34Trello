@@ -1,17 +1,25 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Login {
-    WebDriver wd;
+public class Login extends TestBase {
+    @BeforeMethod
+    public void preConditions(){
+        if(isLogged()){
+            logOut();
+        }
+
+    }
+
 
     @Test
-    public void login1() {
+    public void loginPositive() throws InterruptedException {
+        initLogin();
+        fillInLoginForm();
+        submitLogin();
 
-        wd = new ChromeDriver();
-        wd.navigate().to("https://trello.com/");
     }
+
+
 }

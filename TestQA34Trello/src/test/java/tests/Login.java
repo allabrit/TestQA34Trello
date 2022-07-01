@@ -6,20 +6,15 @@ import org.testng.annotations.Test;
 public class Login extends TestBase {
     @BeforeMethod
     public void preConditions(){
-        if(isLogged()){
-            logOut();
+        if(app.getUser().isLogged()){
+            app.getUser().logOut();
         }
-
     }
-
-
     @Test
     public void loginPositive() throws InterruptedException {
-        initLogin();
-        fillInLoginForm();
-        submitLogin();
-
+        app.getUser().initLogin();
+        app.getUser().fillInLoginForm();
+        app.getUser().submitLogin();
     }
-
 
 }
